@@ -1,0 +1,16 @@
+{
+  "name": "tree-traversal",
+  "version": "1.0.0",
+  "description": "https://www.digitalocean.com/community/tutorials/js-tree-traversal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/tsc ./index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.6.0",
+    "typescript": "4.6.2"
+  }
+}
