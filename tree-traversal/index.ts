@@ -12,7 +12,7 @@ class TreeNode {
   }
 }
 
-class BST {
+class BinarySearchTree {
   public root: TreeNode | null;
 
   constructor() {
@@ -49,10 +49,32 @@ class BST {
 }
 
 // create simple binary tree
-const tree = new BST();
-tree.create(17);
-tree.create(13);
-tree.create(23);
-tree.create(11);
-tree.create(29);
-console.log(tree);
+const tree = new BinarySearchTree();
+const children = [17, 13, 11, 23, 29];
+children.forEach((item) => {
+  tree.create(item);
+});
+console.log("children:", children);
+console.log("BinarySearchTree", tree);
+
+// breadthFirstSearch
+function breadthFirstSearch(tree: BinarySearchTree) {
+  const visited: number[] = [];
+  const queue: TreeNode[] = [];
+  let current: TreeNode = tree.root;
+
+  queue.push(current);
+  while (queue.length) {
+    current = queue.shift();
+    visited.push(current.val);
+
+    if (current.left) {
+      queue.push(current.left);
+    }
+    if (current.right) {
+      queue.push(current.right);
+    }
+  }
+  return visited;
+}
+console.log("breadthFirstSearch", breadthFirstSearch(tree));
