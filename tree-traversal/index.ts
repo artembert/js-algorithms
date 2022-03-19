@@ -79,7 +79,7 @@ function breadthFirstSearch(tree: BinarySearchTree): number[] {
 }
 console.log("Breadth-First Search", breadthFirstSearch(tree));
 
-// Depth-First Search / From root to leafs, started from left / Поиск в глубину
+// Depth-First Search / From the root to leafs, started from left / Поиск в глубину
 function preOrderDFSearch(tree: BinarySearchTree): number[] {
   const visited: number[] = [];
   let current = tree.root;
@@ -97,4 +97,25 @@ function preOrderDFSearch(tree: BinarySearchTree): number[] {
   traverse(current);
   return visited;
 }
-console.log("Depth-First Search", preOrderDFSearch(tree));
+console.log("pre-order Depth-First Search", preOrderDFSearch(tree));
+
+// Depth-First Search / From the leaf to the root
+function postOrderDFSearch(tree: BinarySearchTree): number[] {
+  const visited: number[] = [];
+  let current = tree.root;
+
+  function traverse(node: TreeNode): void {
+    if (node.left) {
+      traverse(node.left);
+    }
+    if (node.right) {
+      traverse(node.right);
+    }
+    visited.push(node.val);
+  }
+
+  traverse(current);
+  return visited;
+}
+
+console.log("post-order Depth-First Search", postOrderDFSearch(tree));
