@@ -119,3 +119,23 @@ function postOrderDFSearch(tree: BinarySearchTree): number[] {
 }
 
 console.log("post-order Depth-First Search", postOrderDFSearch(tree));
+
+// Depth-First Search / From the leaf to the root but push node to the list of visited then left child is done
+function inOrderDFSearch(tree: BinarySearchTree): number[] {
+  const visited: number[] = [];
+  let current = tree.root;
+
+  function traverse(node: TreeNode): void {
+    if (node.left) {
+      traverse(node.left);
+    }
+    visited.push(node.val);
+    if (node.right) {
+      traverse(node.right);
+    }
+  }
+
+  traverse(current);
+  return visited;
+}
+console.log("in-order Depth-First Search", inOrderDFSearch(tree));
